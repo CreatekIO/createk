@@ -1,0 +1,8 @@
+---
+#- name: check for softwareupdate
+#  command: softwareupdate --list | grep --quiet 'No new software available'
+#  ignore_errors: true
+#  register: softwareUptoDate
+
+- name: run softwareupdate
+  command: softwareupdate --install --all
