@@ -1,0 +1,21 @@
+---
+- name: update homebrew
+  homebrew: update_homebrew=yes
+
+- name: tap repos
+  homebrew_tap: name={{ item }}
+  with_items: "{{homebrew_taps}}"
+
+- name: install packages
+  homebrew: name={{ item }}
+  with_items: "{{homebrew_packages}}"
+
+- name: install casks
+  homebrew_cask: name={{ item }}
+  with_items: "{{ homebrew_casks }}"
+
+- name: cleanup
+  command: brew cleanup
+
+- name: cask cleanup
+  command: brew cask cleanup
