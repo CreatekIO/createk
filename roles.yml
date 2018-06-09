@@ -2,3 +2,5 @@
 - hosts: localhost
   roles:
     - {role: softwareupdate, tags: ['softwareupdate']}
+    - {role: dotfiles, tags: ['dotfiles']}
+    - {role: dotfiles, tags: ['dotfiles']}
