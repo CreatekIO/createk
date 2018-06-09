@@ -1,5 +1,0 @@
----
-- hosts: localhost
-  roles:
-    - {role: softwareupdate, tags: ['softwareupdate']}
-    - {role: homebrew, tags: ['homebrew']}
