@@ -1,0 +1,72 @@
+#!/usr/bin/env ruby
+
+require 'shellwords'
+
+module Tty
+  module_function
+
+  def red
+    bold 31
+  end
+
+  def green
+    bold 32
+  end
+
+  def blue
+    bold 34
+  end
+
+  def yellow
+    bold 33
+  end
+
+  def grey
+    bold 37
+  end
+
+  def reset
+    escape 0
+  end
+
+  def bold(n = 39)
+    escape "1;#{n}"
+  end
+
+  def underline
+    escape "4;39"
+  end
+
+  def escape(n)
+    "\e[#{n}m" if STDOUT.tty?
+  end
+end
+
+def ohai(*args)
+  puts "#{Tty.blue}==> #{args.shelljoin}#{Tty.reset}"
+end
+
+def success(*args)
+  puts "#{Tty.green}==> #{args.shelljoin}#{Tty.reset}"
+end
+
+def warn(warning)
+  puts "#{Tty.red}Warning#{Tty.reset}: #{warning.chomp}"
+end
+
+def info(info)
+  puts "    #{Tty.grey}#{info}#{Tty.reset}"
+end
+
+def alert(message)
+  puts "#{Tty.yellow}==> #{message}#{Tty.reset}"
+end
+
+def username
+  @username ||= `whoami`.strip
+end
+
+def run(cmd)
+  info cmd
+  system cmd
+end
