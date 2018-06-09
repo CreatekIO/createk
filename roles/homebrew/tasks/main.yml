@@ -5,3 +5,17 @@
 - name: tap repos
   homebrew_tap: name={{ item }}
   with_items: "{{homebrew_taps}}"
+
+- name: install packages
+  homebrew: name={{ item }}
+  with_items: "{{homebrew_packages}}"
+
+- name: install casks
+  homebrew: name={{ item }}
+  with_items: "{{homebrew_casks}}"
+
+- name: cleanup
+  command: brew cleanup
+
+- name: cask cleanup
+  command: brew cask cleanup
