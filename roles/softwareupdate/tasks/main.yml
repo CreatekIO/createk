@@ -1,3 +1,3 @@
 ---
-- name: run softwareupdate
-  command: softwareupdate --install --all
+- name: run softwareupdate in background
+  command: softwareupdate --install --all --background

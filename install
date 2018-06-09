@@ -62,6 +62,10 @@ def alert(message)
   puts "#{Tty.yellow}==> #{message}#{Tty.reset}"
 end
 
+def file_path(filename)
+  File.join(__dir__, filename)
+end
+
 def username
   @username ||= `whoami`.strip
 end
@@ -117,5 +121,5 @@ ohai 'ansible-playbook:'
 
 tags = ARGV.map { |tag| "--tags #{tag}" }.join(' ')
 
-cmd = "ansible-playbook -i #{File.join(__dir__, 'inventory')} #{tags} #{File.join(__dir__, 'darwin.yml')}"
+cmd = "ansible-playbook -i #{file_path('inventory')} #{tags} #{file_path('roles.yml')}"
 run cmd
