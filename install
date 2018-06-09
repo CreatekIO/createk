@@ -70,3 +70,14 @@ def run(cmd)
   info cmd
   system cmd
 end
+
+################################################################### FileVault ##
+ohai 'FileVault:'
+if `fdesetup status`.include?('FileVault is On')
+  alert 'FileVault: already enabled'
+else
+  cmd = "sudo fdesetup enable --user #{username}"
+  run cmd
+  success 'FileVault: enabled'
+end
+
