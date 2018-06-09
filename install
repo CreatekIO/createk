@@ -81,3 +81,34 @@ else
   success 'FileVault: enabled'
 end
 
+
+#################################################################### homebrew ##
+ohai 'homebrew:'
+if system('command -v brew', out: '/dev/null')
+  alert 'homebrew: already installed'
+else
+  cmd = 'TRAVIS=true /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+  run cmd
+  success 'homebrew installed'
+end
+
+##################################################################### python3 ##
+ohai 'python3:'
+if system('command -v pip3', out: '/dev/null')
+  alert 'python3: already installed'
+else
+  cmd = 'brew install python3'
+  run cmd
+  success 'python3: installed'
+end
+
+##################################################################### anisble ##
+ohai 'ansible:'
+if system('command -v ansible-playbook', out: '/dev/null')
+  alert 'ansible: already installed'
+else
+  cmd = 'pip3 install ansible'
+  run cmd
+  success 'ansible: installed'
+end
+
