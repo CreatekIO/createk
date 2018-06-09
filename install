@@ -112,3 +112,10 @@ else
   success 'ansible: installed'
 end
 
+############################################################ anisble-playbook ##
+ohai 'ansible-playbook:'
+
+tags = ARGV.map { |tag| "--tags #{tag}" }.join(' ')
+
+cmd = "ansible-playbook -i #{File.join(__dir__, 'inventory')} #{tags} #{File.join(__dir__, 'darwin.yml')}"
+run cmd
