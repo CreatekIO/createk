@@ -1,5 +1,5 @@
 ---
 homebrew_taps:
-  - caskroom/drivers
-  - caskroom/fonts
-  - caskroom/versions
+  - homebrew/cask-drivers
+  - homebrew/cask-fonts
+  - homebrew/cask-versions
